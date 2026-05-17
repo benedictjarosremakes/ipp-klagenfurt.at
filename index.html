@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPP | Installateur Proprentner</title>
+    <meta name="description" content="Ihr Installateur in Klagenfurt, Kärnten. Badsanierung, Heizungen, Leckortung und mehr.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Colors */
+            --color-bg: #F8F9FA;
+            --color-surface: #FFFFFF;
+            --color-text: #1A202C;
+            --color-text-muted: #4A5568;
+            --color-accent: #E53E3E;
+            --color-accent-hover: #C53030;
+            --color-navy: #2B6CB0;
+            --color-navy-dark: #1A202C;
+            
+            /* Typography */
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            --text-xs: clamp(0.75rem, 1.5vw, 0.875rem);
+            --text-sm: clamp(0.875rem, 1.8vw, 1rem);
+            --text-base: clamp(1rem, 2vw, 1.125rem);
+            --text-lg: clamp(1.125rem, 2.5vw, 1.375rem);
+            --text-xl: clamp(1.375rem, 3vw, 1.75rem);
+            --text-2xl: clamp(1.75rem, 4vw, 2.5rem);
+            --text-3xl: clamp(2.25rem, 5vw, 3.5rem);
+            --text-4xl: clamp(2.25rem, 6vw, 4rem);
+            
+            /* Spacing */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-24: 6rem;
+            
+            --section-padding: clamp(4rem, 10vw, 8rem);
+            --container-padding: clamp(1.25rem, 5vw, 2rem);
+            
+            /* Z-Index Stack */
+            --z-base: 0;
+            --z-raised: 10;
+            --z-dropdown: 100;
+            --z-sticky: 200;
+            --z-overlay: 500;
+            --z-modal: 1000;
+            --z-toast: 2000;
+            --z-max: 9000;
+        }
+
+        /* Reset & Base */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--color-text);
+            letter-spacing: -0.02em;
+        }
+
+        h1 { font-size: var(--text-4xl); }
+        h2 { font-size: var(--text-3xl); }
+        h3 { font-size: var(--text-2xl); }
+        h4 { font-size: var(--text-xl); }
+
+        p {
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-4);
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        section {
+            padding: var(--section-padding) 0;
+        }
+
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 1rem;
+            background: var(--color-accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            z-index: var(--z-max);
+            font-weight: 500;
+            border-radius: 4px;
+        }
+        .skip-link:focus {
+            top: 1rem;
+        }
+
+        /* Icons */
+        [data-lucide] {
+            display: inline-block;
+            vertical-align: middle;
+            flex-shrink: 0;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        /* Buttons & Inline Flex */
+        .btn, .contact-item, .benefit-item, .modal-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45em;
+        }
+
+        .btn {
+            justify-content: center;
+            padding: 1rem 2rem;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: var(--text-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: var(--z-raised);
+        }
+
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--color-navy);
+            color: var(--color-navy);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--color-navy);
+            color: white;
+        }
+
+        /* Header & Navigation */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+            background-color: var(--color-surface);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .site-header.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 5rem;
+            transition: height 0.3s ease;
+            position: relative;
+        }
+
+        .site-header.scrolled .header-inner {
+            height: 4rem;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: var(--text-2xl);
+            font-weight: 800;
+            color: var(--color-text);
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+            position: relative;
+            z-index: var(--z-raised);
+        }
+
+        .desktop-nav {
+            display: none;
+        }
+
+        .header-cta {
+            display: none;
+        }
+
+        /* Mobile Menu Toggle */
+        .nav-toggle {
+            position: absolute;
+            right: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1002;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: var(--color-text);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* Mobile Overlay */
+        .mobile-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background-color: var(--color-surface);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .mobile-nav-links a {
+            font-family: var(--font-heading);
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            color: var(--color-text);
+            padding: 1rem 0;
+        }
+
+        /* Desktop Nav Media Query */
+        @media (min-width: 768px) {
+            .nav-toggle {
+                display: none;
+                pointer-events: none;
+            }
+
+            .desktop-nav {
+                display: flex;
+                gap: 2rem;
+            }
+
+            .desktop-nav a {
+                font-family: var(--font-heading);
+                font-weight: 600;
+                font-size: var(--text-sm);
+                color: var(--color-text);
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+
+            .desktop-nav a:hover {
+                color: var(--color-accent);
+            }
+
+            .header-cta {
+                display: block;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: calc(5rem + var(--section-padding));
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background-color: var(--color-bg);
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-12);
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-4);
+            display: block;
+        }
+
+        .hero h1 {
+            margin-bottom: var(--space-6);
+        }
+
+        .hero p {
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-8);
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        @media (min-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--space-16);
+            }
+
+            .hero-image-wrapper {
+                height: 80vh;
+                margin-bottom: calc(var(--section-padding) * -1);
+                transform: translateY(10%);
+            }
+        }
+
+        /* Intro Section */
+        .intro {
+            background-color: var(--color-surface);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .intro-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .intro h2 {
+            font-size: var(--text-3xl);
+            color: var(--color-navy-dark);
+            margin-bottom: var(--space-4);
+            line-height: 1.3;
+        }
+
+        .intro-lead {
+            font-size: var(--text-xl);
+            color: var(--color-navy);
+            font-weight: 500;
+            margin: 0;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--color-bg);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-16);
+            max-width: 600px;
+            margin-inline: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-8);
+        }
+
+        .service-card {
+            background: var(--color-surface);
+            padding: var(--space-8);
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.03);
+            border-top: 3px solid transparent;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+            border-top-color: var(--color-navy);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background-color: rgba(43, 108, 176, 0.1);
+            color: var(--color-navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            margin-bottom: var(--space-6);
+        }
+
+        .service-card h3 {
+            font-size: var(--text-xl);
+            margin-bottom: var(--space-4);
+        }
+
+        .service-card p {
+            font-size: var(--text-sm);
+            flex-grow: 1;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--color-surface);
+            overflow: hidden;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-12);
+            align-items: center;
+        }
+
+        .about-content h2 {
+            margin-bottom: var(--space-6);
+        }
+
+        .about-visuals {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-4);
+        }
+
+        .visual-block {
+            height: 240px;
+            background-color: var(--color-bg);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .visual-block img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .visual-block:nth-child(2) {
+            transform: translateY(2rem);
+            background-color: var(--color-navy-dark);
+        }
+        
+        .stat-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+        
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: var(--text-4xl);
+            font-weight: 800;
+            line-height: 1;
+            color: var(--color-accent);
+        }
+        
+        .stat-label {
+            font-size: var(--text-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: var(--space-2);
+        }
+
+        @media (min-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--space-16);
+            }
+            .about-content {
+                padding-right: var(--space-8);
+            }
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background-color: var(--color-bg);
+        }
+
+        .benefits-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--color-surface);
+            padding: var(--space-12);
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .benefits-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+        }
+
+        .benefit-item {
+            align-items: flex-start;
+        }
+
+        .benefit-icon {
+            color: var(--color-accent);
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .benefit-text {
+            font-size: var(--text-lg);
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: var(--color-navy-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: clamp(4rem, 8vw, 7rem) 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-12);
+            margin-bottom: var(--space-16);
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-6);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-brand .logo {
+            color: white;
+            display: inline-block;
+            margin-bottom: var(--space-4);
+        }
+
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: var(--space-6);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+            text-align: center;
+            font-size: var(--text-sm);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-6);
+        }
+
+        .footer-links button {
+            color: inherit;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .footer-links button:hover {
+            color: white;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+
+        /* Modals */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: var(--z-modal);
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--container-padding);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-card {
+            background-color: var(--color-surface);
+            width: 100%;
+            max-width: 480px;
+            padding: var(--space-8);
+            border-radius: 4px;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: var(--color-text-muted);
+            padding: 0.5rem;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--color-accent);
+        }
+
+        .modal-card h3 {
+            margin-bottom: var(--space-4);
+            color: var(--color-navy-dark);
+        }
+
+        .modal-card p {
+            margin-bottom: var(--space-6);
+        }
+
+        .modal-links {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+
+        .modal-links a {
+            color: var(--color-navy);
+            font-weight: 500;
+        }
+
+        .modal-links a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--color-surface);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            padding: var(--space-6) var(--container-padding);
+            z-index: var(--z-toast);
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-top: 2px solid var(--color-accent);
+        }
+
+        .cookie-banner.visible {
+            transform: translateY(0);
+        }
+
+        .cookie-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .cookie-text p {
+            font-size: var(--text-sm);
+            margin: 0;
+        }
+
+        .cookie-actions {
+            display: flex;
+            gap: var(--space-4);
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 768px) {
+            .cookie-content {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .cookie-text {
+                max-width: 60%;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- DEMO NOTICE BANNER - benedictjaros.com -->
+<style>
+#__demo_spacer{display:block;}
+#__demo_notice,#__demo_notice *{box-sizing:border-box;margin:0;padding:0;}
+#__demo_notice{
+  position:fixed;top:0;left:0;right:0;z-index:99999;
+  background:rgba(9,9,11,.97);
+  backdrop-filter:blur(14px) saturate(160%);
+  -webkit-backdrop-filter:blur(14px) saturate(160%);
+  border-bottom:1px solid rgba(255,255,255,.07);
+  font-family:system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+}
+#__demo_inner{
+  max-width:1280px;margin:0 auto;
+  padding:0 44px 0 18px;min-height:38px;
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+#__demo_dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;background:#f5c842;box-shadow:0 0 7px rgba(245,200,66,.55);}
+#__demo_label{color:#f5c842;font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase;flex-shrink:0;}
+#__demo_divider{color:rgba(255,255,255,.15);font-size:12px;flex-shrink:0;}
+#__demo_text{color:rgba(255,255,255,.45);font-size:11.5px;line-height:1.45;flex:1 1 160px;}
+#__demo_links{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+#__demo_links a{
+  color:rgba(255,255,255,.38);font-size:11px;text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.14);
+  transition:color .15s,border-color .15s;white-space:nowrap;
+}
+#__demo_links a:hover{color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.4);}
+#__demo_link_sep{color:rgba(255,255,255,.15);font-size:10px;}
+#__demo_close{
+  position:absolute;right:0;top:0;bottom:0;width:40px;
+  background:none;border:none;cursor:pointer;
+  color:rgba(255,255,255,.28);font-size:16px;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  transition:color .15s;
+}
+#__demo_close:hover{color:rgba(255,255,255,.7);}
+@media(max-width:560px){
+  #__demo_inner{padding:7px 44px 7px 14px;gap:6px;}
+  #__demo_text{font-size:11px;flex:1 1 100%;order:3;}
+  #__demo_dot,#__demo_label{order:1;}
+  #__demo_divider{order:2;}
+  #__demo_links{order:4;}
+}
+</style>
+<div id="__demo_spacer"></div>
+<div id="__demo_notice" role="banner" aria-label="Demo notice">
+  <div id="__demo_inner">
+    <span id="__demo_dot"></span>
+    <span id="__demo_label">Demo</span>
+    <span id="__demo_divider">/</span>
+    <span id="__demo_text">Unofficial remake &mdash; not the real website. All content &amp; trademarks belong to their owners.</span>
+    <div id="__demo_links">
+      <a href="https://benedictjaros.com/impressum" target="_blank" rel="noopener noreferrer">Impressum</a>
+      <span id="__demo_link_sep">&middot;</span>
+      <a href="https://benedictjaros.com/datenschutz" target="_blank" rel="noopener noreferrer">Datenschutz</a>
+    </div>
+  </div>
+  <button id="__demo_close" aria-label="Close demo notice">&#x2715;</button>
+</div>
+<script>
+(function () {
+  var spacer = document.getElementById('__demo_spacer');
+  var b = document.getElementById('__demo_notice');
+  var x = document.getElementById('__demo_close');
+  if (!b || !spacer) return;
+  function sync() { spacer.style.height = b.offsetHeight + 'px'; }
+  function hide() {
+    b.style.display = 'none'; spacer.style.height = '0';
+    try { sessionStorage.setItem('__demo_closed', '1'); } catch (e) {}
+  }
+  try { if (sessionStorage.getItem('__demo_closed')) { b.style.display = 'none'; spacer.style.height = '0'; return; } } catch (e) {}
+  sync();
+  window.addEventListener('resize', function () { if (b.style.display !== 'none') sync(); });
+  if (x) x.addEventListener('click', hide);
+}());
+</script>
+
+    <a href="#main" class="skip-link">Zum Hauptinhalt springen</a>
+
+    <!-- Header -->
+    <header class="site-header" id="header">
+        <div class="container header-inner">
+            <a href="#" class="logo" aria-label="Startseite">IPP</a>
+            
+            <nav class="desktop-nav" aria-label="Hauptnavigation">
+                <a href="#leistungen">Leistungen</a>
+                <a href="#ueber-uns">Über Uns</a>
+                <a href="#kontakt">Kontakt</a>
+            </nav>
+
+            <div class="header-cta">
+                <a href="tel:+43463499554" class="btn btn-primary">
+                    <i data-lucide="phone"></i>
+                    0463 499 554
+                </a>
+            </div>
+
+            <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobile-menu" role="dialog" aria-modal="true">
+        <nav class="mobile-nav-links">
+            <a href="#leistungen">Leistungen</a>
+            <a href="#ueber-uns">Über Uns</a>
+            <a href="#kontakt">Kontakt</a>
+            <a href="tel:+43463499554" style="color: var(--color-accent); margin-top: 2rem; display: inline-flex; align-items: center; gap: 0.45em;">
+                <i data-lucide="phone" style="width: 24px; height: 24px;"></i>
+                0463 499 554
+            </a>
+        </nav>
+    </div>
+
+    <main id="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <span class="hero-subtitle">I.P.P. Proprentner</span>
+                    <h1>Installateur Proprentner.<br>Montage - Service - Verkauf.</h1>
+                    <p>Ihr verlässlicher Partner für Badsanierung, Heizungstechnik und schnelle Hilfe bei Leckortung in Klagenfurt und ganz Kärnten.</p>
+                    <a href="#kontakt" class="btn btn-primary">
+                        Jetzt anfragen
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+                <div class="hero-image-wrapper">
+                    <img src="https://www.ipp-klagenfurt.at/uploads/CH4PeWaw/737x0_813x0/AdobeStock_166205009.jpg" alt="Modernes, hochwertiges Badezimmer Design" width="737" height="813" fetchpriority="high">
+                </div>
+            </div>
+        </section>
+
+        <!-- Intro Section -->
+        <section class="intro">
+            <div class="container intro-content reveal">
+                <h2>I.P.P. Proprentner – Ihr Installateur in Klagenfurt, Kärnten.</h2>
+                <p class="intro-lead">Sie suchen einen Installateur in Klagenfurt? Bei I.P.P. Proprentner sind Sie genau richtig!</p>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="leistungen">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Unsere Leistungen</h2>
+                    <p>Präzises Handwerk und moderne Technik für Ihr Zuhause.</p>
+                </div>
+                
+                <div class="services-grid">
+                    <article class="service-card reveal" style="--i:0">
+                        <div class="service-icon">
+                            <i data-lucide="bath"></i>
+                        </div>
+                        <h3>Badsanierung</h3>
+                        <p>Komplette Neugestaltung und Sanierung Ihres Badezimmers aus einer Hand. Von der Planung bis zur finalen Montage.</p>
+                    </article>
+                    
+                    <article class="service-card reveal" style="--i:1">
+                        <div class="service-icon">
+                            <i data-lucide="droplets"></i>
+                        </div>
+                        <h3>Bäder</h3>
+                        <p>Hochwertige Ausstattung, moderne Armaturen und zeitloses Design für Ihre persönliche Wohlfühloase.</p>
+                    </article>
+                    
+                    <article class="service-card reveal" style="--i:2">
+                        <div class="service-icon">
+                            <i data-lucide="search"></i>
+                        </div>
+                        <h3>Leckortung</h3>
+                        <p>Zerstörungsfreie und punktgenaue Ortung von Wasserschäden mit modernster Technologie zur Schadensminimierung.</p>
+                    </article>
+                    
+                    <article class="service-card reveal" style="--i:3">
+                        <div class="service-icon">
+                            <i data-lucide="flame"></i>
+                        </div>
+                        <h3>Heizungen</h3>
+                        <p>Installation, Wartung und Reparatur von Heizsystemen. Effiziente Lösungen für ein warmes Zuhause.</p>
+                    </article>
+                    
+                    <article class="service-card reveal" style="--i:4">
+                        <div class="service-icon">
+                            <i data-lucide="wrench"></i>
+                        </div>
+                        <h3>Abflussverstopfung</h3>
+                        <p>Schnelle und professionelle Behebung von Verstopfungen. Zuverlässiger Service, wenn Sie ihn am meisten brauchen.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="ueber-uns">
+            <div class="container about-grid">
+                <div class="about-content reveal">
+                    <h2>Ihr Installateur und Badsanierer</h2>
+                    <p>Das Badezimmer ist heute immer öfter Ort der Zufriedenheit, der Erholung und der Entspannung. Es ist ein Raum, in dem der Tag beginnt und endet.</p>
+                    <p>Wir verstehen, dass eine Sanierung oder ein Neubau Vertrauenssache ist. Deshalb legen wir größten Wert auf strukturierte Planung, saubere Ausführung und höchste Qualität bei den verwendeten Materialien. Unser Team aus erfahrenen Fachkräften sorgt dafür, dass Ihr Projekt reibungslos und termingerecht umgesetzt wird.</p>
+                    <button class="btn btn-outline" style="margin-top: 1rem;" onclick="openPlaceholderModal('Beratungstermin')">Beratung vereinbaren</button>
+                </div>
+                
+                <div class="about-visuals reveal" style="transition-delay: 0.2s">
+                    <div class="visual-block">
+                        <img src="https://www.ipp-klagenfurt.at/uploads/CH4PeWaw/737x0_813x0/AdobeStock_166205009.jpg" alt="Handwerkliche Präzision bei der Badsanierung" style="object-position: center left;">
+                    </div>
+                    <div class="visual-block">
+                        <div class="stat-content">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Fachkompetenz</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits">
+            <div class="container">
+                <div class="benefits-container reveal">
+                    <h2 style="text-align: center; margin-bottom: 2rem;">Badneubau und -sanierung in Kärnten</h2>
+                    <ul class="benefits-list">
+                        <li class="benefit-item">
+                            <i data-lucide="check-circle" class="benefit-icon"></i>
+                            <span class="benefit-text">Persönliche Beratung und individuelle Planung vor Ort</span>
+                        </li>
+                        <li class="benefit-item">
+                            <i data-lucide="check-circle" class="benefit-icon"></i>
+                            <span class="benefit-text">Demontage und umweltgerechte Entsorgung der Altmaterialien</span>
+                        </li>
+                        <li class="benefit-item">
+                            <i data-lucide="check-circle" class="benefit-icon"></i>
+                            <span class="benefit-text">Fachgerechte Installation aller Sanitär- und Heizungsanlagen</span>
+                        </li>
+                        <li class="benefit-item">
+                            <i data-lucide="check-circle" class="benefit-icon"></i>
+                            <span class="benefit-text">Koordination aller beteiligten Gewerke (Fliesenleger, Elektriker etc.)</span>
+                        </li>
+                        <li class="benefit-item">
+                            <i data-lucide="check-circle" class="benefit-icon"></i>
+                            <span class="benefit-text">Besenreine Übergabe Ihres neuen Traum-Badezimmers</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" id="kontakt">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-brand">
+                    <span class="logo">IPP</span>
+                    <p style="color: rgba(255,255,255,0.7); font-size: var(--text-sm);">Ihr verlässlicher Installateur für Montage, Service und Verkauf in Kärnten.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <i data-lucide="map-pin"></i>
+                            <span>Pischeldorfer Straße 93<br>9020 Klagenfurt</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="phone"></i>
+                            <a href="tel:+43463499554">+43 463 499 554</a>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="mail"></i>
+                            <a href="mailto:office@r-ipp.eu">office@r-ipp.eu</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Öffnungszeiten</h4>
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <i data-lucide="clock"></i>
+                            <span>Mo - Do: 07:30 - 16:30<br>Fr: 07:30 - 12:00</span>
+                        </div>
+                        <div class="contact-item" style="margin-top: 1rem;">
+                            <button class="btn btn-primary" onclick="openPlaceholderModal('Kontaktformular')">Nachricht senden</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div>
+                    © 2026 I.P.P. Proprentner — All original content, images & trademarks are property of their respective owners. Website rebuilt by Benedict Jaros.
+                </div>
+                <div class="footer-links">
+                    <button onclick="openLegalModal()">Impressum</button>
+                    <button onclick="openLegalModal()">Datenschutz</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Legal Modal -->
+    <div class="modal-overlay" id="legal-modal" role="dialog" aria-modal="true" aria-labelledby="legal-modal-title">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModals()" aria-label="Schließen">
+                <i data-lucide="x"></i>
+            </button>
+            <h3 id="legal-modal-title">Rechtliche Hinweise</h3>
+            <p>Diese Website ist ein Demo-Remake und wurde nicht von oder für das Unternehmen erstellt. Die Inhalte dienen ausschließlich Demonstrationszwecken. Für unsere eigenen rechtlichen Informationen:</p>
+            <div class="modal-links">
+                <a href="https://benedictjaros.com/impressum" target="_blank" rel="noopener noreferrer">
+                    <i data-lucide="external-link" style="width: 16px; height: 16px;"></i> Impressum
+                </a>
+                <a href="https://benedictjaros.com/datenschutz" target="_blank" rel="noopener noreferrer">
+                    <i data-lucide="external-link" style="width: 16px; height: 16px;"></i> Datenschutz
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Placeholder Modal -->
+    <div class="modal-overlay" id="placeholder-modal" role="dialog" aria-modal="true" aria-labelledby="placeholder-modal-title">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModals()" aria-label="Schließen">
+                <i data-lucide="x"></i>
+            </button>
+            <h3 id="placeholder-modal-title">Feature Name</h3>
+            <p>This feature will be live once the website is launched and configured. Contact us in the meantime — we'd love to hear from you.</p>
+            <button class="btn btn-primary" onclick="closeModals()" style="width: 100%; margin-top: 1rem;">Schließen</button>
+        </div>
+    </div>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookie Banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <p>Wir verwenden Cookies, um Ihre Erfahrung auf unserer Website zu verbessern. Durch die Nutzung unserer Website stimmen Sie der Verwendung von Cookies gemäß unserer <button onclick="openLegalModal()" style="text-decoration: underline; color: inherit; padding: 0;">Datenschutzerklärung</button> zu.</p>
+            </div>
+            <div class="cookie-actions">
+                <button class="btn btn-outline" onclick="handleCookieConsent('declined')" style="padding: 0.5rem 1rem;">Ablehnen</button>
+                <button class="btn btn-outline" onclick="openPlaceholderModal('Cookie Einstellungen')" style="padding: 0.5rem 1rem;">Einstellungen</button>
+                <button class="btn btn-primary" onclick="handleCookieConsent('accepted')" style="padding: 0.5rem 1rem;">Akzeptieren</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Sticky Header
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu
+        const navToggle = document.getElementById('nav-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+
+        function toggleMenu() {
+            const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', !isExpanded);
+            
+            if (!isExpanded) {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                navToggle.setAttribute('aria-label', 'Menü schließen');
+            } else {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+                navToggle.setAttribute('aria-label', 'Menü öffnen');
+            }
+        }
+
+        navToggle.addEventListener('click', toggleMenu);
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Scroll Reveal
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOptions = {
+            threshold: 0.12,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Modals
+        const legalModal = document.getElementById('legal-modal');
+        const placeholderModal = document.getElementById('placeholder-modal');
+        const placeholderTitle = document.getElementById('placeholder-modal-title');
+
+        function openLegalModal() {
+            legalModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openPlaceholderModal(title) {
+            placeholderTitle.textContent = title;
+            placeholderModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModals() {
+            legalModal.classList.remove('active');
+            placeholderModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modals on Escape or outside click
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModals();
+        });
+
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeModals();
+            });
+        });
+
+        // Cookie Banner
+        const cookieBanner = document.getElementById('cookie-banner');
+        
+        function checkCookieConsent() {
+            const consent = localStorage.getItem('cookie_consent');
+            if (!consent) {
+                setTimeout(() => {
+                    cookieBanner.classList.add('visible');
+                }, 1000);
+            }
+        }
+
+        function handleCookieConsent(choice) {
+            localStorage.setItem('cookie_consent', choice);
+            cookieBanner.classList.remove('visible');
+        }
+
+        // Init
+        document.addEventListener('DOMContentLoaded', checkCookieConsent);
+    </script>
+</body>
+</html>
